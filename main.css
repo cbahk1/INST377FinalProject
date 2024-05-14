@@ -7,10 +7,10 @@ ul {
 li {
     display: inline;
     margin-left: 5px;
-    font-size: 30px;
+    font-size: 25px;
     padding: 5px;
     outline-style: solid;
-    outline-color: white;
+    outline-color: rgb(141, 12, 12);
     background-color:floralwhite;
 }
 
