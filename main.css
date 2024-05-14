@@ -6,19 +6,24 @@ ul {
 
 li {
     display: inline;
-    float: left;
     margin-left: 5px;
     font-size: 30px;
     padding: 5px;
     outline-style: solid;
     outline-color: white;
-    background-color: grey;
+    background-color:floralwhite;
 }
 
 li a {
     text-decoration: none;
+
 }
 
 #navBar {
+width: 100%;
+}
 
+#fullPage {
+    background-color: wheat;
+    height: 100%;
 }
