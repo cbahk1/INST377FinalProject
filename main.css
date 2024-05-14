@@ -23,3 +23,8 @@
     background-color: wheat;
     height: 100%;
 }
+
+#introBox li {
+    font-size: 25px;
+    list-style-type: square;
+}
