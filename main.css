@@ -1,10 +1,10 @@
-ul {
+#navBar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-li {
+#navBar li {
     display: inline;
     margin-left: 5px;
     font-size: 25px;
@@ -14,14 +14,10 @@ li {
     background-color:floralwhite;
 }
 
-li a {
+#navBar li a {
     text-decoration: none;
-
 }
 
-#navBar {
-width: 100%;
-}
 
 #fullPage {
     background-color: wheat;
