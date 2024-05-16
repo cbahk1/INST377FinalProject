@@ -1,3 +1,7 @@
 function apiRequest() {
     
 }
+
+function redirect() {
+    
+}
