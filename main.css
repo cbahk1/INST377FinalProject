@@ -18,6 +18,10 @@
     text-decoration: none;
 }
 
+#navBar li:hover {
+    background-color: salmon;
+}
+
 
 #fullPage {
     background-color: wheat;
