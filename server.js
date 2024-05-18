@@ -1,11 +1,12 @@
-const express = require('express');
-const { createClient } = require('@supabase/supabase-js');
-const app = express();
-app.use(express.json());
+const express = require('express')  
+const supabaseClient = require('@supabase/supabase-js')
+const app = express()
+const port = 3000
+app.use(express.static(__dirname + '/public'))
 
-const supabaseUrl = 'https://vyundpotrrqaqgkvyyqc.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5dW5kcG90cnJxYXFna3Z5eXFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYwNTk2MjAsImV4cCI6MjAzMTYzNTYyMH0.Yy5GL-WeoYevJYFPZbXkFAPukJmZUAjgmhmXRvq0jQo';
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = 'https://vyundpotrrqaqgkvyyqc.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5dW5kcG90cnJxYXFna3Z5eXFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYwNTk2MjAsImV4cCI6MjAzMTYzNTYyMH0.Yy5GL-WeoYevJYFPZbXkFAPukJmZUAjgmhmXRvq0jQo'
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 
 app.get('/api/movies', async (req, res) => {
