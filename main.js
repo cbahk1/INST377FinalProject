@@ -58,7 +58,6 @@ function displayMovies(movies) {
     });
 }
 
-<<<<<<< HEAD
 //for server.js and about.html
 function submitFeedback(liked) {
     fetch('/api/feedback', {
@@ -76,25 +75,3 @@ function submitFeedback(liked) {
     })
     .catch(error => console.error('Error submitting feedback:', error));
 }
-
-function fetchTrailer(imdbID) {
-    fetch(`https://api.kinocheck.de/movies?imdb_id=${imdbID}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Trailer response:", data);
-            // Process the response data here
-        })
-        .catch(error => console.error('Error fetching trailer:', error));
-}
-
-function redirect() {
-    window.location.href = "about.html";
-}
-
-
->>>>>>> 852143ee6d86d0e8f4f5844db6f6494b59eab800
