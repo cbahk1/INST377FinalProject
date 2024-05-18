@@ -8,6 +8,9 @@
     IN DIFF DIVS AND ASYNC FUNCTIONS!!!!!! :)
     -->
     <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
         <title>INST377: Final project</title>
         <link rel="stylesheet" href="main.css">
         <script src="main.js"></script>
@@ -27,14 +30,22 @@
         </div>
         <button id="fetchFlightsButton">Fetch Flights</button>
 
-        <script src="script.js"></script>
+    <!--- <script src="script.js"></script>
         <script>
             // Attach click event listener to the button
             document.getElementById("fetchFlightsButton").addEventListener("click", function() {
                 // Call the apiRequest function when the button is clicked
                 apiRequest();
             });
+        </script> -->
+
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
         </script>
+
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+
     </div>         
     </body>
 
