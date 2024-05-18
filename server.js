@@ -9,18 +9,17 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 
-app.get('/api/movies', async (req, res) => {
+app.get('/movies', async (req, res) => {
+    console.log('Grabbing movies searched')
     const { data, error } = await supabase
         .from('movies')
-        .select('*');
-    if (error) {
-        res.status(400).send('Error');
-    } else {
-        res.status(200).json(data);
-    }
+        .select();
+
+        console.log('Data', data)
+        console.log('Error', error)
 });
 
-app.post('/api/feedback', async (req, res) => {
+app.post('/feedback', async (req, res) => {
     const { liked } = req.body;
     console.log(`Feedback received: User ${liked ? 'liked' : 'did not like'} the website.`);
     res.status(200).json({ message: 'Feedback received, thank you!' });
