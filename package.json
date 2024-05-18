@@ -1,6 +1,10 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "@supabase/supabase-js": "^2.43.2",
     "express": "^4.19.2"
+=======
+    "simple-slider": "^1.0.1"
+>>>>>>> 852143ee6d86d0e8f4f5844db6f6494b59eab800
   }
 }
