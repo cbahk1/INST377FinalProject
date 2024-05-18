@@ -1,38 +1,41 @@
-function apiRequest() {
-    const params = {
-        access_key: '0010541e02761fd64632dcd518250273'
-    };
+document.getElementById('searchButton').addEventListener('click', function() {
+    const query = document.getElementById('searchInput').value;
+    searchMovies(query);
+});
 
-    const queryString = new URLSearchParams(params).toString();
-    const url = `https://api.aviationstack.com/v1/flights?${queryString}`;
-
+function searchMovies(query) {
+    const apiKey = '5914722f'; 
+    const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`;
+    
     fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            const apiResponse = data;
-            if (Array.isArray(apiResponse['results'])) {
-                apiResponse['results'].forEach(flight => {
-                    if (!flight['live']['is_ground']) {
-                        console.log(`${flight['airline']['name']} flight ${flight['flight']['iata']}`,
-                            `from ${flight['departure']['airport']} (${flight['departure']['iata']})`,
-                            `to ${flight['arrival']['airport']} (${flight['arrival']['iata']}) is in the air.`);
-                    }
-                });
+            if (data.Response === 'True') {
+                displayMovies(data.Search);
+            } else {
+                alert(data.Error);
             }
         })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+        .catch(error => console.error('Error fetching data:', error));
 }
 
+function displayMovies(movies) {
+    const movieList = document.getElementById('movieList');
+    movieList.innerHTML = '';
 
-function redirect() {
-    window.location.href = "about.html";
+    movies.forEach(movie => {
+        const movieElement = document.createElement('div');
+        movieElement.classList.add('movie');
+        
+        movieElement.innerHTML = `
+            <img src="${movie.Poster}" alt="${movie.Title}">
+            <div class="movie-details">
+                <h2>${movie.Title}</h2>
+                <p>${movie.Year}</p>
+                <p>${movie.Type}</p>
+            </div>
+        `;
+        
+        movieList.appendChild(movieElement);
+    });
 }
-
-apiRequest()
