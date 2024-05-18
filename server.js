@@ -17,15 +17,20 @@ app.get('/movies', async (req, res) => {
 
         console.log('Data', data)
         console.log('Error', error)
+    if (error) {
+        res.send('Error');
+    } else {
+        res.send(data);
+    }
 });
 
 app.post('/feedback', async (req, res) => {
     const { liked } = req.body;
     console.log(`Feedback received: User ${liked ? 'liked' : 'did not like'} the website.`);
-    res.status(200).json({ message: 'Feedback received, thank you!' });
+    res.send({ message: 'Feedback received, thank you!' });
 //     res.status(200).send({ message: 'Feedback received, thank you!' }); try either one couldnt find why its not sending a message
 });
 
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
