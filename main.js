@@ -41,3 +41,21 @@ function displayMovies(movies) {
         movieList.appendChild(movieElement);
     });
 }
+
+//for server.js and about.html
+function submitFeedback(liked) {
+    fetch('/api/feedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ liked: liked })
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        alert(data.message); 
+    })
+    .catch(error => console.error('Error submitting feedback:', error));
+}

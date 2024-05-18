@@ -2,6 +2,8 @@
 <head>
         <title>INST377: Final Project - About Us</title>
     <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+    <script src="server.js" defer></script>
 </head>
 <body>
     <div id="fullPage">
@@ -28,6 +30,13 @@
                 <li>Watch trailers and additional media</li>
             </ul>
             <h2>Contact Us</h2>
+            <!-- For server.js and main.js-->
+            <div id="feedbackSection">
+                <h3>Did you like our website?</h3>
+                <button onclick="submitFeedback(true)">Yes</button>
+                <button onclick="submitFeedback(false)">No</button>
+            </div>
+
             <p>If you have any questions, suggestions, or feedback, feel free to <a href="mailto:info@myentertainmentsite.com">contact us</a>.</p>
             <a href="main.html" class="button">Back to Search</a>
         </div>
