@@ -13,10 +13,12 @@ app.get('/movies', async (req, res) => {
     console.log('Grabbing movies searched')
     const { data, error } = await supabase
         .from('movies')
+        .insert({'movie_name': movie_name})
         .select();
 
         console.log('Data', data)
         console.log('Error', error)
+
     if (error) {
         res.send('Error');
     } else {
@@ -25,10 +27,10 @@ app.get('/movies', async (req, res) => {
 });
 
 app.post('/feedback', async (req, res) => {
-    const { liked } = req.body;
-    console.log(`Feedback received: User ${liked ? 'liked' : 'did not like'} the website.`);
+    const { data, error } = await supabase
+    .from('feedback')
+    .insert([{[feedback]: 1}])
     res.send({ message: 'Feedback received, thank you!' });
-//     res.status(200).send({ message: 'Feedback received, thank you!' }); try either one couldnt find why its not sending a message
 });
 
 

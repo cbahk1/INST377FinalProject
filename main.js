@@ -60,7 +60,7 @@ function displayMovies(movies) {
 
 //for server.js and about.html
 function submitFeedback(liked) {
-    fetch('/api/feedback', {
+    fetch('/feedback', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
