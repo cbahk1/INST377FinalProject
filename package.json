@@ -1,6 +1,17 @@
 {
+  "name": "finalProject",
+  "version": "1.0.0",
+  "main": "server.js",
   "dependencies": {
-    "@supabase/supabase-js": "^2.43.2",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "@supabase/supabase-js": "^2.43.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
