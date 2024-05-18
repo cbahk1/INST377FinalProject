@@ -1,25 +1,25 @@
+document.getElementById('searchButton').addEventListener('click', function() {
+    const query = document.getElementById('searchInput').value;
+    searchMovies(query);
+});
 
-function apiRequest() {
-    fetch('http://api.aviationstack.com/v1/flights?access_key=0010541e02761f')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the JSON response
-    })
-    .then(data => {
-        // Handle the data from the response
-        console.log(data); // For example, log the data to the console
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
+function searchMovies(query) {
+    const apiKey = '5914722f'; 
+    const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.Response === 'True') {
+                displayMovies(data.Search);
+            } else {
+                alert(data.Error);
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
 }
-
 
 
 function redirect() {
     window.location.href = "about.html";
 }
-
-apiRequest()
