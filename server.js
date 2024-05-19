@@ -38,7 +38,7 @@ app.post('/feedback', async (req, res) => {
 
 //everything below is made by himani not entirely sure if correct but here is some code to work with if it can help  
 // API endpoint to retrieve data from the 'movies' table
-//app.get('/movies', async (req, res) => {
+app.get('/movies', async (req, res) => {
     console.log('Fetching movies from database');
     const { data, error } = await supabase
         .from('movies')
@@ -54,7 +54,7 @@ app.post('/feedback', async (req, res) => {
 });
 
 // API endpoint to write feedback to the 'feedback' table
-//app.post('/feedback', async (req, res) => {
+app.post('/feedback', async (req, res) => {
     const { feedback } = req.body; // Assumes the feedback data is sent in the request body
 
     if (!feedback) {
