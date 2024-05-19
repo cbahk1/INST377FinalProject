@@ -1,12 +1,16 @@
-
 <html>
 <head>
-
     <title>INST377: Final Project - Home</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="main.js" defer></script>
+
 </head>
 <body>
+
     <div id="fullPage">
         <div id="header">
             <h1>Home Page!</h1>
@@ -34,14 +38,52 @@
             <button id="aboutRedirect" onclick="redirect()">Learn more About us!</button>
         </div>
 
-        <div style="width:612px; height:612px" data-simple-slider>
-            <img src="https://picsum.photos/612/612?random=1"/>
-            <img src="https://picsum.photos/612/612?random=2"/>
-          </div>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js"></script>
-          <script>
-            simpleslider.getSlider();
-          </script>
+        <div class="carousel" style="width:612px; height:612px;"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                fetchMovies();
+
+                function fetchMovies() {
+                    const apiKey = '5914722f'; // Replace with your actual API key
+                    const url = `https://www.omdbapi.com/?s=movie&apikey=${apiKey}&page=1`;
+
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.Response === 'True') {
+                                displayMoviesInCarousel(data.Search);
+                            } else {
+                                alert(data.Error);
+                            }
+                        })
+                        .catch(error => console.error('Error fetching data:', error));
+                }
+
+                function displayMoviesInCarousel(movies) {
+                    const carousel = document.querySelector('.carousel');
+                    carousel.innerHTML = '';
+
+                    movies.forEach(movie => {
+                        const movieElement = document.createElement('div');
+                        movieElement.innerHTML = `<img src="${movie.Poster}" alt="${movie.Title}">`;
+                        carousel.appendChild(movieElement);
+                    });
+
+                    // Initialize the slick carousel with autoplay and no arrows
+                    $(carousel).slick({
+                        infinite: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 1000,
+                        fade: true,
+                        cssEase: 'linear',
+                        arrows: false // Disable navigation arrows
+                    });
+                }
+            });
+        </script>
     </div>
 </body>
 </html>
+
