@@ -67,6 +67,8 @@ function displayMovies(movies) {
     });
 }
 
+//npm start, sudo lsof -i :3000 kill -9 XXXX
+//
 function submitFeedback(liked) {
     console.log("Feedback went through test")
     fetch('http://127.0.0.1:3000/feedback',  {
