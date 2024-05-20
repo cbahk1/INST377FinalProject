@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function searchMovies(query) {
-    const apiKey = '5914722f'; // Replace with your actual API key
+    const apiKey = '5914722f'; 
     const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}&page=1`;
 
     fetch(url)
@@ -23,7 +23,7 @@ function searchMovies(query) {
             } else {
                 alert(data.Error);
             }
-            console.log(data); // Log the JSON response here
+            console.log(data); 
         })
         .catch(error => console.error('Error fetching data:', error));
 }
@@ -32,7 +32,6 @@ function displayMovies(movies) {
     const movieList = document.getElementById('movieList');
     movieList.innerHTML = '';
 
-    // Limit the number of movies displayed to 3
     const moviesToShow = movies.slice(0, 3);
 
     moviesToShow.forEach(movie => {
