@@ -9,10 +9,20 @@ document.addEventListener('DOMContentLoaded', function () {
             searchMovies(query);
         }
     });
+    document.getElementById('yesButton').addEventListener('click', function() {
+        console.log("true clicked");
+        submitFeedback(true);
+    });
+    
+    document.getElementById('noButton').addEventListener('click', function() {
+        console.log("false clicked");
+        submitFeedback(false);
+    });
+    
 });
 
 function searchMovies(query) {
-    const apiKey = '5914722f'; // Replace with your actual API key
+    const apiKey = '5914722f';
     const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}&page=1`;
 
     fetch(url)
@@ -23,7 +33,7 @@ function searchMovies(query) {
             } else {
                 alert(data.Error);
             }
-            console.log(data); // Log the JSON response here
+            console.log(data); 
         })
         .catch(error => console.error('Error fetching data:', error));
 }
@@ -32,7 +42,6 @@ function displayMovies(movies) {
     const movieList = document.getElementById('movieList');
     movieList.innerHTML = '';
 
-    // Limit the number of movies displayed to 3
     const moviesToShow = movies.slice(0, 3);
 
     moviesToShow.forEach(movie => {
@@ -58,20 +67,17 @@ function displayMovies(movies) {
     });
 }
 
-//for server.js and about.html
 function submitFeedback(liked) {
-    fetch('/feedback', {
+    console.log("Feedback went through test")
+    fetch('http://127.0.0.1:3000/feedback',  {
+    // fetch('/feedback', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ liked: liked })
+        body: JSON.stringify({ 'isLiked': liked }) 
     })
-    .then(response => {
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-        alert(data.message); 
+        // alert(data.message); 
+        alert("Thank you for your feedback.");
     })
-    .catch(error => console.error('Error submitting feedback:', error));
+    .catch(error => console.error('Error', error));
 }
