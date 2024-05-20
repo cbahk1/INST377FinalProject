@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function searchMovies(query) {
-    const apiKey = '5914722f';
+    const apiKey = '5914722f'; 
     const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}&page=1`;
 
     fetch(url)
